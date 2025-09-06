@@ -93,10 +93,6 @@
                 <label for="inspectionTime" class="block text-gray-700">Time</label>
                 <input type="time" id="inspectionTime" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
-            <div class="input-group">
-                <label for="inspectorName" class="block text-gray-700">Inspector's Name</label>
-                <input type="text" id="inspectorName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., John Doe">
-            </div>
         </div>
 
                 <div class="section-header">Room Condition Checklist</div>
@@ -218,7 +214,7 @@
         </div>
         
                 <div class="btn-group">
-            <button class="action-btn bg-gray-500 hover:bg-gray-600" onclick="clearForm()">Clear Form</button>
+            <button class="action-btn bg-gray-500 hover:bg-gray-600" type="reset">Clear Form</button>
             <button class="action-btn" onclick="sendReportEmail()">Generate & Email Report</button>
         </div>
     </div>
@@ -240,18 +236,6 @@
             });
         });
 
-        function clearForm() {
-            const formContent = document.getElementById('form-content');
-            // Get all form elements and reset them
-            formContent.querySelectorAll('input, textarea').forEach(element => {
-                if (element.type === 'checkbox') {
-                    element.checked = false;
-                } else {
-                    element.value = '';
-                }
-            });
-        }
-
         function sendReportEmail() {
             // Define the recipient's email address here
             const recipientEmail = "terencetampinescc@gmail.com";
@@ -261,7 +245,6 @@
             const event = document.getElementById('eventName').value;
             const date = document.getElementById('inspectionDate').value;
             const time = document.getElementById('inspectionTime').value;
-            const inspectorName = document.getElementById('inspectorName').value;
             const notes = document.getElementById('notes').value;
 
             // Get selected checklist values
@@ -281,8 +264,7 @@
             emailBody += `Venue: ${venue || 'N/A'}\n`;
             emailBody += `Class: ${event || 'N/A'}\n`;
             emailBody += `Date: ${date || 'N/A'}\n`;
-            emailBody += `Time: ${time || 'N/A'}\n`;
-            emailBody += `Inspector's Name: ${inspectorName || 'N/A'}\n\n`;
+            emailBody += `Time: ${time || 'N/A'}\n\n`;
 
             emailBody += '--- Room Condition Checklist ---\n';
             checklistItems.forEach(item => {
