@@ -13,30 +13,30 @@
         }
         .form-container {
             max-width: 800px;
-            margin: 1.5rem auto;
+            margin: 2rem auto;
             background-color: white;
-            padding: 1rem;
+            padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .section-header {
             background-color: #e5e7eb;
-            padding: 0.5rem 0.75rem;
+            padding: 0.75rem 1rem;
             border-radius: 8px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
         .input-group {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
         }
         .checklist-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background-color: #f9fafb;
-            padding: 0.5rem 0.75rem;
+            padding: 0.75rem 1rem;
             border-radius: 8px;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             transition: background-color 0.2s;
         }
         .checklist-item:hover {
@@ -53,7 +53,7 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
         }
         .action-btn {
             background-color: #2563eb;
@@ -71,143 +71,154 @@
 </head>
 <body>
     <div class="form-container" id="form-content">
-        <div class="flex justify-center items-center mb-2">
-            <h1 class="text-xl font-bold text-gray-800 text-center">Inspection Form</h1>
+        <div class="flex justify-center items-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800 text-center">Inspection Form</h1>
         </div>
+
         <div class="section-header">General Information</div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div class="input-group">
-                <label for="venueName" class="block text-gray-700 text-sm">Venue</label>
-                <input type="text" id="venueName" class="w-full mt-1 p-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="e.g., Dance Studio 1">
+                <label for="venueName" class="block text-gray-700">Venue</label>
+                <input type="text" id="venueName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Dance Studio 1">
             </div>
             <div class="input-group">
-                <label for="eventName" class="block text-gray-700 text-sm">Class</label>
-                <input type="text" id="eventName" class="w-full mt-1 p-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="e.g., Ballet">
+                <label for="eventName" class="block text-gray-700">Class/Event</label>
+                <input type="text" id="eventName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Ballet">
             </div>
             <div class="input-group">
-                <label for="inspectionDate" class="block text-gray-700 text-sm">Date</label>
-                <input type="date" id="inspectionDate" class="w-full mt-1 p-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                <label for="inspectionDate" class="block text-gray-700">Date</label>
+                <input type="date" id="inspectionDate" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
             <div class="input-group">
-                <label for="inspectionTime" class="block text-gray-700 text-sm">Time</label>
-                <input type="time" id="inspectionTime" class="w-full mt-1 p-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                <label for="inspectionTime" class="block text-gray-700">Time</label>
+                <input type="time" id="inspectionTime" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
         </div>
+
         <div class="section-header">Room Condition Checklist</div>
-        <div class="mb-2">
+        <div class="mb-6">
             <div id="checklist-container">
-                <h3 class="font-semibold text-gray-600 my-0.5">General</h3>
+                <h3 class="font-semibold text-gray-600 my-2">General</h3>
                 <div class="checklist-item">
                     <span class="item-label">Floors (clean, no clutter, no litter)</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="floors" value="Yes">
-                            <span class="text-xs">Yes</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="floors" value="Yes">
+                            <span class="text-sm">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="floors" value="No">
-                            <span class="text-xs">No</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="floors" value="No">
+                            <span class="text-sm">No</span>
                         </label>
                     </div>
                 </div>
                 <div class="checklist-item">
                     <span class="item-label">Lighting (lights working, kept off)</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="lighting" value="Yes">
-                            <span class="text-xs">Yes</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="lighting" value="Yes">
+                            <span class="text-sm">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="lighting" value="No">
-                            <span class="text-xs">No</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="lighting" value="No">
+                            <span class="text-sm">No</span>
                         </label>
                     </div>
                 </div>
                 <div class="checklist-item">
                     <span class="item-label">Windows (blinds are working, kept down)</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="windows" value="Yes">
-                            <span class="text-xs">Yes</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="windows" value="Yes">
+                            <span class="text-sm">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="windows" value="No">
-                            <span class="text-xs">No</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="windows" value="No">
+                            <span class="text-sm">No</span>
                         </label>
                     </div>
                 </div>
                 <div class="checklist-item">
                     <span class="item-label">Doors (functional, kept closed and locked)</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="doors" value="Yes">
-                            <span class="text-xs">Yes</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="doors" value="Yes">
+                            <span class="text-sm">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="doors" value="No">
-                            <span class="text-xs">No</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="doors" value="No">
+                            <span class="text-sm">No</span>
                         </label>
                     </div>
                 </div>
-                <h3 class="font-semibold text-gray-600 my-0.5">Furniture (refer to posters for original position)</h3>
+
+                <h3 class="font-semibold text-gray-600 my-2 mt-4">Furniture (refer to posters for original position)</h3>
                 <div class="checklist-item">
                     <span class="item-label">Tables (placed at original position)</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="tables" value="Yes">
-                            <span class="text-xs">Yes</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="Yes">
+                            <span class="text-sm">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="tables" value="No">
-                            <span class="text-xs">No</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="No">
+                            <span class="text-sm">No</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="tables" value="N/A">
-                            <span class="text-xs">N/A</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="N/A">
+                            <span class="text-sm">N/A</span>
                         </label>
                     </div>
                 </div>
                 <div class="checklist-item">
                     <span class="item-label">Chairs (placed at original position)</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="chairs" value="Yes">
-                            <span class="text-xs">Yes</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="Yes">
+                            <span class="text-sm">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="chairs" value="No">
-                            <span class="text-xs">No</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="No">
+                            <span class="text-sm">No</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="chairs" value="N/A">
-                            <span class="text-xs">N/A</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="N/A">
+                            <span class="text-sm">N/A</span>
                         </label>
                     </div>
                 </div>
                 <div class="checklist-item">
                     <span class="item-label">Others (e.g. mats placed at original position)</span>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="others" value="Yes">
-                            <span class="text-xs">Yes</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="Yes">
+                            <span class="text-sm">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="others" value="No">
-                            <span class="text-xs">No</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="No">
+                            <span class="text-sm">No</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-3 w-3 rounded-md text-blue-600 border-gray-300" name="others" value="N/A">
-                            <span class="text-xs">N/A</span>
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="N/A">
+                            <span class="text-sm">N/A</span>
                         </label>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="section-header">Notes & Comments</div>
         <div class="input-group">
-            <label for="notes" class="block text-gray-700 text-sm">If any of the points above are not in correct condition, please take a picture and upload to the group chat. You can add more comments below if necessary</label>
-            <textarea id="notes" rows="3" class="w-full mt-1 p-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="e.g., tables and chairs not kept at original position"></textarea>
+            <label for="notes" class="block text-gray-700">If any of the points above are not in correct condition, please take a picture and upload to the group chat. You can add more comments below if necessary</label>
+            <textarea id="notes" rows="4" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., tables and chairs not kept at original position"></textarea>
         </div>
+        
+        <div class="section-header">Inspected By</div>
+        <div class="input-group">
+            <label for="inspectedBy" class="block text-gray-700">Name</label>
+            <input type="text" id="inspectedBy" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Name">
+        </div>
+        
         <div class="btn-group">
             <button class="action-btn" onclick="sendReportEmail()">Generate & Email Report</button>
         </div>
@@ -217,12 +228,15 @@
         function sendReportEmail() {
             // Define the recipient's email address here
             const recipientEmail = "terencetampinescc@gmail.com";
+
             // Get form values
             const venue = document.getElementById('venueName').value;
             const event = document.getElementById('eventName').value;
             const date = document.getElementById('inspectionDate').value;
             const time = document.getElementById('inspectionTime').value;
             const notes = document.getElementById('notes').value;
+            const inspectedBy = document.getElementById('inspectedBy').value;
+
             // Get selected checklist values
             const checklistItems = [
                 { label: 'Floors (clean, no clutter, no litter)', name: 'floors' },
@@ -233,6 +247,7 @@
                 { label: 'Chairs (placed at original position)', name: 'chairs' },
                 { label: 'Others (e.g. mats placed at original position)', name: 'others' }
             ];
+
             // Build the email body string
             let emailBody = 'Event Room Inspection Report\n\n';
             emailBody += '--- General Information ---\n';
@@ -240,17 +255,25 @@
             emailBody += `Class: ${event || 'N/A'}\n`;
             emailBody += `Date: ${date || 'N/A'}\n`;
             emailBody += `Time: ${time || 'N/A'}\n\n`;
+
             emailBody += '--- Room Condition Checklist ---\n';
             checklistItems.forEach(item => {
                 const value = document.querySelector(`input[name="${item.name}"]:checked`)?.value || 'N/A';
                 emailBody += `${item.label}: ${value}\n`;
             });
+
             emailBody += '\n--- Notes & Comments ---\n';
             emailBody += `${notes || 'No notes provided.'}\n`;
+            
+            emailBody += '\n--- Inspected By ---\n';
+            emailBody += `${inspectedBy || 'N/A'}\n`;
+
             // Prepare the email subject
             const subject = `Inspection Report for ${venue} - ${date}`;
+
             // Create the mailto link
             const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
             // Open the user's email client
             window.location.href = mailtoLink;
         }
