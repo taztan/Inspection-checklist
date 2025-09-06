@@ -71,12 +71,9 @@
 </head>
 <body>
     <div class="form-container" id="form-content">
-        <!-- Header with Logo and Title -->
         <div class="flex justify-center items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-800 text-center">Inspection Form</h1>
         </div>
-
-        <!-- General Information Section -->
         <div class="section-header">General Information</div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div class="input-group">
@@ -95,13 +92,14 @@
                 <label for="inspectionTime" class="block text-gray-700">Time</label>
                 <input type="time" id="inspectionTime" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
+            <div class="input-group">
+                <label for="inspectorName" class="block text-gray-700">Inspector's Name</label>
+                <input type="text" id="inspectorName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., John Doe">
+            </div>
         </div>
-
-        <!-- Checklist Section -->
         <div class="section-header">Room Condition Checklist</div>
         <div class="mb-6">
             <div id="checklist-container">
-                <!-- General -->
                 <h3 class="font-semibold text-gray-600 my-2">General</h3>
                 <div class="checklist-item">
                     <span class="item-label">Floors (clean, no clutter, no litter)</span>
@@ -155,8 +153,6 @@
                         </label>
                     </div>
                 </div>
-
-                <!-- Furniture & Fixtures -->
                 <h3 class="font-semibold text-gray-600 my-2 mt-4">Furniture (refer to posters for original position)</h3>
                 <div class="checklist-item">
                     <span class="item-label">Tables (placed at original position)</span>
@@ -211,32 +207,52 @@
                 </div>
             </div>
         </div>
-
-        <!-- Notes Section -->
         <div class="section-header">Notes & Comments</div>
         <div class="input-group">
             <label for="notes" class="block text-gray-700">If any of the points above are not in correct condition, please take a picture and upload to the group chat. You can add more comments below if necessary</label>
             <textarea id="notes" rows="4" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., tables and chairs not kept at original position"></textarea>
         </div>
-        
-        <!-- Single Button for Combined Action -->
         <div class="btn-group">
+            <button class="action-btn bg-gray-500 hover:bg-gray-600" onclick="clearForm()">Clear Form</button>
             <button class="action-btn" onclick="sendReportEmail()">Generate & Email Report</button>
         </div>
     </div>
-    
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checklistContainer = document.getElementById('checklist-container');
+            checklistContainer.addEventListener('change', (event) => {
+                const target = event.target;
+                if (target.type === 'checkbox') {
+                    const groupName = target.name;
+                    const checkboxesInGroup = document.querySelectorAll(`input[name="${groupName}"]`);
+                    checkboxesInGroup.forEach(checkbox => {
+                        if (checkbox !== target) {
+                            checkbox.checked = false;
+                        }
+                    });
+                }
+            });
+        });
+        function clearForm() {
+            const formContent = document.getElementById('form-content');
+            formContent.querySelectorAll('input, textarea').forEach(element => {
+                if (element.type === 'checkbox') {
+                    element.checked = false;
+                } else {
+                    element.value = '';
+                }
+            });
+        }
         function sendReportEmail() {
             // Define the recipient's email address here
             const recipientEmail = "terencetampinescc@gmail.com";
-
             // Get form values
             const venue = document.getElementById('venueName').value;
             const event = document.getElementById('eventName').value;
             const date = document.getElementById('inspectionDate').value;
             const time = document.getElementById('inspectionTime').value;
+            const inspectorName = document.getElementById('inspectorName').value;
             const notes = document.getElementById('notes').value;
-
             // Get selected checklist values
             const checklistItems = [
                 { label: 'Floors (clean, no clutter, no litter)', name: 'floors' },
@@ -247,30 +263,25 @@
                 { label: 'Chairs (placed at original position)', name: 'chairs' },
                 { label: 'Others (e.g. mats placed at original position)', name: 'others' }
             ];
-
             // Build the email body string
             let emailBody = 'Event Room Inspection Report\n\n';
             emailBody += '--- General Information ---\n';
             emailBody += `Venue: ${venue || 'N/A'}\n`;
             emailBody += `Class: ${event || 'N/A'}\n`;
             emailBody += `Date: ${date || 'N/A'}\n`;
-            emailBody += `Time: ${time || 'N/A'}\n\n`;
-
+            emailBody += `Time: ${time || 'N/A'}\n`;
+            emailBody += `Inspector's Name: ${inspectorName || 'N/A'}\n\n`;
             emailBody += '--- Room Condition Checklist ---\n';
             checklistItems.forEach(item => {
                 const value = document.querySelector(`input[name="${item.name}"]:checked`)?.value || 'N/A';
                 emailBody += `${item.label}: ${value}\n`;
             });
-
             emailBody += '\n--- Notes & Comments ---\n';
             emailBody += `${notes || 'No notes provided.'}\n`;
-
             // Prepare the email subject
             const subject = `Inspection Report for ${venue} - ${date}`;
-
             // Create the mailto link
             const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-            
             // Open the user's email client
             window.location.href = mailtoLink;
         }
