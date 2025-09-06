@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Room Inspection Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .section-header {
+            background-color: #e5e7eb;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f9fafb;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .checklist-item:hover {
+            background-color: #f3f4f6;
+        }
+        .item-label {
+            font-weight: 500;
+            color: #1f2937;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .action-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+        .action-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Styles for PDF output */
+        @media print {
+            body {
+                background-color: white;
+            }
+            .form-container, .btn-group {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            /* This is the key change to ensure each section is on a new page */
+            .section-header {
+                background-color: #d1d5db;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+                page-break-after: always;
+            }
+            .checklist-item, .input-group, h3 {
+                page-break-inside: avoid;
+            }
+            .btn-group {
+                display: none;
+            }
+        }
+    </style>
+    <!-- Library to convert HTML to PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="form-container" id="form-content">
+        <!-- Header with Logo and Title -->
+        <div class="flex justify-center items-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800 text-center">Inspection Form</h1>
+        </div>
+
+        <!-- General Information Section -->
+        <div class="section-header">General Information</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="input-group">
+                <label for="venueName" class="block text-gray-700">Venue</label>
+                <input type="text" id="venueName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Dance Studio 1">
+            </div>
+            <div class="input-group">
+                <label for="eventName" class="block text-gray-700">Class</label>
+                <input type="text" id="eventName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Ballet">
+            </div>
+            <div class="input-group">
+                <label for="inspectionDate" class="block text-gray-700">Date</label>
+                <input type="date" id="inspectionDate" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="input-group">
+                <label for="inspectionTime" class="block text-gray-700">Time</label>
+                <input type="time" id="inspectionTime" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            </div>
+        </div>
+
+        <!-- Checklist Section -->
+        <div class="section-header">Room Condition Checklist</div>
+        <div class="mb-6">
+            <div id="checklist-container">
+                <!-- General -->
+                <h3 class="font-semibold text-gray-600 my-2">General</h3>
+                <div class="checklist-item">
+                    <span class="item-label">Floors (clean, no clutter, no litter)</span>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="floors" value="Yes">
+                            <span class="text-sm">Yes</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="floors" value="No">
+                            <span class="text-sm">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <span class="item-label">Lighting (lights working, kept off)</span>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="lighting" value="Yes">
+                            <span class="text-sm">Yes</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="lighting" value="No">
+                            <span class="text-sm">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <span class="item-label">Windows (blinds are working, kept down)</span>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="windows" value="Yes">
+                            <span class="text-sm">Yes</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="windows" value="No">
+                            <span class="text-sm">No</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <span class="item-label">Doors (functional, kept closed and locked)</span>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="doors" value="Yes">
+                            <span class="text-sm">Yes</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="doors" value="No">
+                            <span class="text-sm">No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Furniture & Fixtures -->
+                <h3 class="font-semibold text-gray-600 my-2 mt-4">Furniture (refer to posters for original position)</h3>
+                <div class="checklist-item">
+                    <span class="item-label">Tables (placed at original position)</span>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="Yes">
+                            <span class="text-sm">Yes</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="No">
+                            <span class="text-sm">No</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="N/A">
+                            <span class="text-sm">N/A</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <span class="item-label">Chairs (placed at original position)</span>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="Yes">
+                            <span class="text-sm">Yes</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="No">
+                            <span class="text-sm">No</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="N/A">
+                            <span class="text-sm">N/A</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <span class="item-label">Others (e.g. mats placed at original position)</span>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="Yes">
+                            <span class="text-sm">Yes</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="No">
+                            <span class="text-sm">No</span>
+                        </label>
+                        <label class="flex items-center gap-1">
+                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="N/A">
+                            <span class="text-sm">N/A</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="section-header">Notes & Comments</div>
+        <div class="input-group">
+            <label for="notes" class="block text-gray-700">If any of the points above are not in correct condition, please take a picture and upload to the group chat. You can add more comments below if necessary</label>
+            <textarea id="notes" rows="4" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., tables and chairs not kept at original position"></textarea>
+        </div>
+        
+        <!-- Single Button for Combined Action -->
+        <div class="btn-group">
+            <button class="action-btn" onclick="generateAndEmailReport()">Generate & Email Report</button>
+        </div>
+    </div>
+    <script>
+        function generateAndEmailReport() {
+            // Define the recipient's email address here
+            // CHANGE THIS EMAIL ADDRESS to the one you want to send the report to
+            const recipientEmail = "terencetampinescc@gmail.com";
+
+            const formContent = document.getElementById('form-content');
+
+            const options = {
+                filename: 'Inspection_Form.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // First, generate the PDF and save it.
+            html2pdf().set(options).from(formContent).save().then(() => {
+                // After the PDF is downloaded, prepare the email.
+                const venue = document.getElementById('venueName').value;
+                const date = document.getElementById('inspectionDate').value;
+                const subject = `Inspection Report for ${venue} - ${date}`;
+                
+                // The body is now a simple string with line breaks.
+                const body = "Please attach the downloaded pdf%0D%0A%0D%0Aregards%0D%0A%0D%0APeople's Association";
+
+                // Create the mailto link
+                const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailtoLink;
+            });
+        }
+    </script>
+</body>
+</html>
