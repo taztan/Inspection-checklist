@@ -13,30 +13,30 @@
         }
         .form-container {
             max-width: 800px;
-            margin: 4rem auto;
+            margin: 2rem auto;
             background-color: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .section-header {
             background-color: #e5e7eb;
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 0.75rem;
             border-radius: 8px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             font-weight: 600;
         }
         .input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         .checklist-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background-color: #f9fafb;
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 0.75rem;
             border-radius: 8px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             transition: background-color 0.2s;
         }
         .checklist-item:hover {
@@ -53,7 +53,7 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
         }
         .action-btn {
             background-color: #2563eb;
@@ -71,42 +71,42 @@
 </head>
 <body>
     <div class="form-container" id="form-content">
-        <div class="flex justify-center items-center mb-6">
-            <h1 class="text-3xl font-bold text-gray-800 text-center">Inspection Form</h1>
+        <div class="flex justify-center items-center mb-4">
+            <h1 class="text-2xl font-bold text-gray-800 text-center">Inspection Form</h1>
         </div>
         <div class="section-header">General Information</div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
             <div class="input-group">
-                <label for="venueName" class="block text-gray-700">Venue</label>
-                <input type="text" id="venueName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Dance Studio 1">
+                <label for="venueName" class="block text-gray-700 text-sm">Venue</label>
+                <input type="text" id="venueName" class="w-full mt-1 p-1.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="e.g., Dance Studio 1">
             </div>
             <div class="input-group">
-                <label for="eventName" class="block text-gray-700">Class</label>
-                <input type="text" id="eventName" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Ballet">
+                <label for="eventName" class="block text-gray-700 text-sm">Class</label>
+                <input type="text" id="eventName" class="w-full mt-1 p-1.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="e.g., Ballet">
             </div>
             <div class="input-group">
-                <label for="inspectionDate" class="block text-gray-700">Date</label>
-                <input type="date" id="inspectionDate" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <label for="inspectionDate" class="block text-gray-700 text-sm">Date</label>
+                <input type="date" id="inspectionDate" class="w-full mt-1 p-1.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
             </div>
             <div class="input-group">
-                <label for="inspectionTime" class="block text-gray-700">Time</label>
-                <input type="time" id="inspectionTime" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <label for="inspectionTime" class="block text-gray-700 text-sm">Time</label>
+                <input type="time" id="inspectionTime" class="w-full mt-1 p-1.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
             </div>
         </div>
         <div class="section-header">Room Condition Checklist</div>
-        <div class="mb-6">
+        <div class="mb-4">
             <div id="checklist-container">
-                <h3 class="font-semibold text-gray-600 my-2">General</h3>
+                <h3 class="font-semibold text-gray-600 my-1">General</h3>
                 <div class="checklist-item">
                     <span class="item-label">Floors (clean, no clutter, no litter)</span>
                     <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="floors" value="Yes">
-                            <span class="text-sm">Yes</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="floors" value="Yes">
+                            <span class="text-xs">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="floors" value="No">
-                            <span class="text-sm">No</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="floors" value="No">
+                            <span class="text-xs">No</span>
                         </label>
                     </div>
                 </div>
@@ -114,12 +114,12 @@
                     <span class="item-label">Lighting (lights working, kept off)</span>
                     <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="lighting" value="Yes">
-                            <span class="text-sm">Yes</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="lighting" value="Yes">
+                            <span class="text-xs">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="lighting" value="No">
-                            <span class="text-sm">No</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="lighting" value="No">
+                            <span class="text-xs">No</span>
                         </label>
                     </div>
                 </div>
@@ -127,12 +127,12 @@
                     <span class="item-label">Windows (blinds are working, kept down)</span>
                     <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="windows" value="Yes">
-                            <span class="text-sm">Yes</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="windows" value="Yes">
+                            <span class="text-xs">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="windows" value="No">
-                            <span class="text-sm">No</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="windows" value="No">
+                            <span class="text-xs">No</span>
                         </label>
                     </div>
                 </div>
@@ -140,30 +140,30 @@
                     <span class="item-label">Doors (functional, kept closed and locked)</span>
                     <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="doors" value="Yes">
-                            <span class="text-sm">Yes</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="doors" value="Yes">
+                            <span class="text-xs">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="doors" value="No">
-                            <span class="text-sm">No</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="doors" value="No">
+                            <span class="text-xs">No</span>
                         </label>
                     </div>
                 </div>
-                <h3 class="font-semibold text-gray-600 my-2 mt-4">Furniture (refer to posters for original position)</h3>
+                <h3 class="font-semibold text-gray-600 my-1 mt-2">Furniture (refer to posters for original position)</h3>
                 <div class="checklist-item">
                     <span class="item-label">Tables (placed at original position)</span>
                     <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="Yes">
-                            <span class="text-sm">Yes</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="tables" value="Yes">
+                            <span class="text-xs">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="No">
-                            <span class="text-sm">No</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="tables" value="No">
+                            <span class="text-xs">No</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="tables" value="N/A">
-                            <span class="text-sm">N/A</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="tables" value="N/A">
+                            <span class="text-xs">N/A</span>
                         </label>
                     </div>
                 </div>
@@ -171,16 +171,16 @@
                     <span class="item-label">Chairs (placed at original position)</span>
                     <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="Yes">
-                            <span class="text-sm">Yes</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="chairs" value="Yes">
+                            <span class="text-xs">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="No">
-                            <span class="text-sm">No</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="chairs" value="No">
+                            <span class="text-xs">No</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="chairs" value="N/A">
-                            <span class="text-sm">N/A</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="chairs" value="N/A">
+                            <span class="text-xs">N/A</span>
                         </label>
                     </div>
                 </div>
@@ -188,16 +188,16 @@
                     <span class="item-label">Others (e.g. mats placed at original position)</span>
                     <div class="flex items-center gap-4">
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="Yes">
-                            <span class="text-sm">Yes</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="others" value="Yes">
+                            <span class="text-xs">Yes</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="No">
-                            <span class="text-sm">No</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="others" value="No">
+                            <span class="text-xs">No</span>
                         </label>
                         <label class="flex items-center gap-1">
-                            <input type="checkbox" class="h-4 w-4 rounded-md text-blue-600 border-gray-300" name="others" value="N/A">
-                            <span class="text-sm">N/A</span>
+                            <input type="checkbox" class="h-3.5 w-3.5 rounded-md text-blue-600 border-gray-300" name="others" value="N/A">
+                            <span class="text-xs">N/A</span>
                         </label>
                     </div>
                 </div>
@@ -205,13 +205,15 @@
         </div>
         <div class="section-header">Notes & Comments</div>
         <div class="input-group">
-            <label for="notes" class="block text-gray-700">If any of the points above are not in correct condition, please take a picture and upload to the group chat. You can add more comments below if necessary</label>
-            <textarea id="notes" rows="4" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., tables and chairs not kept at original position"></textarea>
+            <label for="notes" class="block text-gray-700 text-sm">If any of the points above are not in correct condition, please take a picture and upload to the group chat. You can add more comments below if necessary</label>
+            <textarea id="notes" rows="4" class="w-full mt-1 p-1.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="e.g., tables and chairs not kept at original position"></textarea>
         </div>
+        
         <div class="btn-group">
             <button class="action-btn" onclick="sendReportEmail()">Generate & Email Report</button>
         </div>
     </div>
+    
     <script>
         function sendReportEmail() {
             // Define the recipient's email address here
