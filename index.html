@@ -67,9 +67,21 @@
         .action-btn:hover {
             background-color: #1d4ed8;
         }
+
+        /* --- CSS FOR QR CODE --- */
+        #qr-code {
+          position: fixed; /* Use 'fixed' to stick on scroll, or 'absolute' */
+          top: 15px;
+          right: 15px;
+          width: 120px;
+          height: auto;
+          z-index: 1000; /* Ensures it stays on top of other content */
+        }
     </style>
 </head>
 <body>
+    <img id="qr-code" src="path/to/your/qr-code.png" alt="QR Code">
+
     <div class="form-container" id="form-content">
         <div class="flex justify-center items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-800 text-center">Inspection Form</h1>
@@ -280,5 +292,6 @@
             window.location.href = mailtoLink;
         }
     </script>
+
 </body>
 </html>
